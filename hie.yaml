@@ -1,0 +1,13 @@
+cradle:
+  cabal:
+    - path: "src"
+      component: "lib:myhsapp"
+
+    - path: "exec/myhsapp/myhsapp.hs"
+      component: "myhsapp:exe:myhsapp"
+
+    - path: "exec/myhsapp/Paths_myhsapp.hs"
+      component: "myhsapp:exe:myhsapp"
+
+    - path: "test"
+      component: "myhsapp:test:spec"

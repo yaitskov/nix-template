@@ -1,0 +1,111 @@
+name: myhsapp
+version: 0.0.1
+license: BSD
+license-file: LICENSE
+author: Daniil Iaitskov
+maintainer: dyaitskov@gmail.com
+copyright: Daniil Iaitskov
+category: Demo
+build-type: Simple
+
+flags:
+  pedantic:
+    default: false
+    manual: true
+  examples:
+    manual: true
+    default: false
+
+default-extensions:
+  - LambdaCase
+  - MultiWayIf
+  - OverloadedStrings
+  # GHC2021
+  - BangPatterns
+  - BinaryLiterals
+  - ConstrainedClassMethods
+  - ConstraintKinds
+  - DeriveDataTypeable
+  - DeriveFoldable
+  - DeriveFunctor
+  - DeriveGeneric
+  - DeriveLift
+  - DeriveTraversable
+  - EmptyCase
+  - EmptyDataDeriving
+  - ExistentialQuantification
+  - ExplicitForAll
+  - FlexibleContexts
+  - FlexibleInstances
+  - GADTSyntax
+  - GeneralizedNewtypeDeriving
+  - HexFloatLiterals
+  # - ImportQualifiedPost -- intentionally disabled: this automatically switches ormolu bundled in HLS to use that syntax
+  - InstanceSigs
+  - KindSignatures
+  - MultiParamTypeClasses
+  - NamedFieldPuns
+  - NamedWildCards
+  - NumericUnderscores
+  - PolyKinds
+  - PostfixOperators
+  - RankNTypes
+  - ScopedTypeVariables
+  - StandaloneDeriving
+  - StandaloneKindSignatures
+  - TupleSections
+  - TypeApplications
+  - TypeOperators
+  - TypeSynonymInstances
+
+dependencies:
+  - base >= 4.10 && < 5
+
+# ghc-options: -haddock
+
+library:
+  when:
+    - condition: flag(pedantic)
+      then:
+        ghc-options: -Wall -Werror -Wwarn=deprecations
+      else:
+        ghc-options: -Wall
+  source-dirs: src
+  generated-exposed-modules:
+    - Paths_myhsapp
+  default-extensions:
+    - AllowAmbiguousTypes
+    - NoImplicitPrelude
+  # dependencies:
+
+executables:
+  myhsapp: &exe
+    main: myhsapp.hs
+    source-dirs: exec/myhsapp
+    dependencies:
+      - base
+      - myhsapp
+    ghc-options: &exe_ghc_options -rtsopts -threaded -dynamic
+
+tests:
+  spec:
+    <<: *exe
+    ghc-options:
+      - *exe_ghc_options
+      - -Wall
+      - -Wno-incomplete-uni-patterns
+      - -Wno-incomplete-patterns
+      - -Wno-unused-do-bind
+      - -Wno-name-shadowing
+      - -Wno-type-defaults
+    main: Driver.hs
+    source-dirs:
+      - test
+    dependencies:
+      - base
+      - tasty
+      - tasty-discover
+      - tasty-expected-failure
+      - tasty-golden
+      - tasty-hunit
+      - tasty-quickcheck

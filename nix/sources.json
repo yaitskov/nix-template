@@ -1,0 +1,26 @@
+{
+    "beam": {
+        "branch": "sqlite-default",
+        "description": "A type-safe, non-TH Haskell SQL library and ORM",
+        "homepage": "https://haskell-beam.github.io/beam/",
+        "owner": "haskell-beam",
+        "repo": "beam",
+        "rev": "7aa489a6b8baca04eadf38f5968dd1bb28f4329f",
+        "sha256": "0v9f68dry65isr3k0rrjnwaif1pgddxbm5dhyanz2c7xcgrbdb4w",
+        "type": "tarball",
+        "url": "https://github.com/haskell-beam/beam/archive/7aa489a6b8baca04eadf38f5968dd1bb28f4329f.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "nixpkgs": {
+        "branch": "master",
+        "description": "Nix Packages collection",
+        "homepage": "",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "4217614266efccf9c5f8817532fbcbdbf31001e2",
+        "sha256": "0xiiprzxm72xw0jrgr1fgz0lxkhhl0n6gk08wv2hn8l0ms5w2yl7",
+        "type": "tarball",
+        "url": "https://github.com/NixOS/nixpkgs/archive/4217614266efccf9c5f8817532fbcbdbf31001e2.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    }
+}
